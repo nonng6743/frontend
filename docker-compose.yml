@@ -8,10 +8,13 @@ services:
       - WATCHPACK_POLLING=true
       - CHOKIDAR_USEPOLLING=true
       - NEXT_PUBLIC_API_URL=http://localhost:3001
+      - API_INTERNAL_URL=http://host.docker.internal:3001
     ports:
       - "3000:3000"
     volumes:
       - .:/app
       - /app/node_modules
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     command: sh -c "npm ci && npm run dev -- -p 3000 -H 0.0.0.0"
 
