@@ -1,6 +1,26 @@
 version: "3.9"
 services:
   frontend:
+    profiles:
+      - prod
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - NODE_ENV=production
+      - NEXT_TELEMETRY_DISABLED=1
+      - NEXT_PUBLIC_API_URL=http://localhost:3001
+      - API_INTERNAL_URL=http://host.docker.internal:3001
+    ports:
+      - "3000:3000"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    restart: unless-stopped
+    command: ["npm", "start"]
+
+  frontend-dev:
+    profiles:
+      - dev
     image: node:22-alpine
     working_dir: /app
     environment:
