@@ -1,8 +1,16 @@
 "use client";
 import { useEffect, useState } from "react";
 
+type Me = { userId: number } | null;
+
+function isMeResponse(value: unknown): value is { userId: number } {
+  if (typeof value !== "object" || value === null) return false;
+  const obj = value as Record<string, unknown>;
+  return typeof obj.userId === "number";
+}
+
 export default function ProfilePage() {
-  const [me, setMe] = useState<any>(null);
+  const [me, setMe] = useState<Me>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -11,8 +19,8 @@ export default function ProfilePage() {
         const res = await fetch(process.env.NEXT_PUBLIC_API_URL + "/auth/me", {
           credentials: "include",
         });
-        const data = await res.json();
-        setMe(data);
+        const data = (await res.json()) as unknown;
+        setMe(isMeResponse(data) ? { userId: data.userId } : null);
       } finally {
         setLoading(false);
       }
