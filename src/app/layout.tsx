@@ -19,33 +19,37 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"),
   title: {
-    default: "nonxdev • จ้างโปรแกรมเมอร์มืออาชีพ | Hire Pro Developers",
+    default: "nonxdev • บริการพัฒนาเว็บไซต์ AI Chatbot Web Scraping",
     template: "%s | nonxdev",
   },
   description:
-    "แพลตฟอร์มให้ลูกค้าจ้างโปรแกรมเมอร์มืออาชีพ Web/Mobile/Backend/AI พร้อมเริ่มงาน รวดเร็ว ปลอดภัย คุณภาพการันตี",
+    "nonxdev พัฒนาเว็บไซต์ ระบบ eCommerce chatbot AI และ web scraping มืออาชีพ ผลงานจริง ราคาแข่งขัน ส่งงานตรงเวลา",
   applicationName: "nonxdev",
   keywords: [
-    "จ้างโปรแกรมเมอร์",
+    "พัฒนาเว็บไซต์",
+    "AI Chatbot",
+    "Web Scraping",
+    "eCommerce",
     "รับทำเว็บไซต์",
     "Next.js",
     "React",
-    "Freelance Developer",
+    "Node.js",
+    "Python",
   ],
   openGraph: {
     type: "website",
-    title: "nonxdev • จ้างโปรแกรมเมอร์มืออาชีพ",
+    title: "nonxdev • บริการพัฒนาเว็บไซต์ AI Chatbot Web Scraping",
     description:
-      "ลูกค้าจ้างงานนักพัฒนาคุณภาพ ราคาชัดเจน ส่งงานตรงเวลา ปลอดภัยด้วย Escrow",
+      "พัฒนาเว็บไซต์ ระบบ eCommerce chatbot AI web scraping มืออาชีพ ผลงานจริง ราคาแข่งขัน",
     url: "/",
     siteName: "nonxdev",
     images: [{ url: "/nonxdev-og.png", width: 1200, height: 630, alt: "nonxdev" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "nonxdev • จ้างโปรแกรมเมอร์มืออาชีพ",
+    title: "nonxdev • บริการพัฒนาเว็บไซต์ AI Chatbot Web Scraping",
     description:
-      "ลูกค้าจ้างงานนักพัฒนาคุณภาพ ราคาชัดเจน ส่งงานตรงเวลา ปลอดภัยด้วย Escrow",
+      "พัฒนาเว็บไซต์ ระบบ eCommerce chatbot AI web scraping มืออาชีพ ผลงานจริง ราคาแข่งขัน",
     images: ["/nonxdev-og.png"],
   },
   alternates: {
@@ -71,10 +75,11 @@ export default function RootLayout({
         <Script id="ld-org" type="application/ld+json" strategy="afterInteractive">
           {JSON.stringify({
             '@context': 'https://schema.org',
-            '@type': 'Organization',
+            '@type': 'ProfessionalService',
             name: 'nonxdev',
             url: process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
             logo: (process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000') + '/nonxdev.svg',
+            serviceType: ['Web Development', 'AI Chatbot', 'Web Scraping'],
           })}
         </Script>
       </body>
